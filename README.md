@@ -1,50 +1,58 @@
-# API REST de Gerenciamento de Vendas e Produtos
+# Sistema de Vendas — Backend
 
-Este projeto consiste em uma API REST desenvolvida em Java com o framework Spring Boot, projetada para gerenciar o controle de estoque de produtos em um sistema corporativo de vendas. A aplicacao foi estruturada seguindo o padrao de arquitetura em camadas, garantindo a separacao de responsabilidades e a manutenibilidade do codigo.
+API REST de estudo para gerenciamento de produtos e estoque, desenvolvida em Java com Spring Boot.
 
-## Funcionalidades Principais
-* **Cadastro de Produtos (POST)**: Endpoint para insercao de novos produtos informando nome, preco e quantidade em estoque.
-* **Listagem de Estoque (GET)**: Endpoint para recuperacao e listagem completa de todos os itens persistidos no banco de dados.
-* **Validacao de Regras de Negocio**: Camada de servico com validacoes estruturadas (ex: bloqueio de precos negativos).
-* **Mapeamento Objeto-Relacional**: Persistencia de dados automatizada via ORM sem a necessidade de escrita manual de instrucoes SQL.
+O projeto exercita fundamentos de backend como separação de responsabilidades, endpoints HTTP, regras de negócio e persistência relacional com JPA.
 
-## Arquitetura e Padrao de Pastas
-O codigo fonte esta organizado dentro do pacote principal em quatro camadas bem definidas:
-* `model`: Contem as entidades que representam as tabelas do banco de dados relacionais.
-* `repository`: Interfaces que herdam do JpaRepository para gerenciar as operacoes de CRUD no banco.
-* `service`: Concentra as regras de negocio, validacoes logicas e tratamento de excecoes da aplicacao.
-* `controller`: Camada de apresentacao REST, responsavel por expor os endpoints HTTP e manipular requisicoes e respostas em formato JSON.
+## Funcionalidades
 
-## Tecnologias e Dependencias Utilizadas
-* **Linguagem**: Java 17 (LTS)
-* **Framework Principal**: Spring Boot 3
-* **Persistencia de Dados**: Spring Data JPA / Hibernate
-* **Banco de Dados**: H2 Database (Banco de dados relacional em memoria para ambiente de desenvolvimento)
-* **Utilitario**: Lombok (Remocao de codigo boilerplate por meio de anotacoes)
-* **Ferramenta de Construcao**: Maven
+- cadastro de produtos;
+- listagem de produtos;
+- validação de regras de negócio na camada de serviço;
+- persistência com Spring Data JPA/Hibernate;
+- banco H2 para desenvolvimento local.
 
-## Instrucoes para Execucao Local
+## Estrutura
 
-1. **Clonar o Repositorio**:
-   ```bash
-   git clone https://github.com
-   cd sistema-vendas-backend
-   ```
+```text
+controller  → entrada HTTP / API REST
+service     → regras de negócio
+repository  → acesso a dados com JPA
+model       → entidades do domínio
+```
 
-2. **Executar a Aplicacao**:
-   Abra o projeto em uma IDE (como VS Code ou IntelliJ) com suporte ao Java 17 instalado e execute a classe principal `SistemaVendasApplication.java`.
+## Tecnologias
 
-3. **Endpoints Disponiveis**:
-   * **Cadastrar Produto**: `POST http://localhost:8080/api/produtos`
-     * Corpo da Requisicao (JSON):
-       ```json
-       {
-         "nome": "Notebook Gamer",
-         "preco": 4500.0,
-         "quantidadeEstoque": 15
-       }
-       ```
-   * **Listar Produtos**: `GET http://localhost:8080/api/produtos`
+- Java 17
+- Spring Boot 4.1.0
+- Spring Web MVC
+- Spring Data JPA / Hibernate
+- H2 Database
+- Lombok
+- Maven
 
----
-Projeto de portfolio focado em arquitetura em camadas (MVC), padrao REST, ORM e desenvolvimento de backend corporativo com Spring Boot.
+> Este é um projeto de estudo/portfólio. O objetivo é demonstrar fundamentos de desenvolvimento backend e arquitetura em camadas, não representar um sistema comercial completo.
+
+## Executando localmente
+
+Pré-requisitos: Java 17+ e Maven (ou o Maven Wrapper incluído no projeto).
+
+```bash
+git clone https://github.com/leonardejhaylson-ui/sistema-vendas-backend.git
+cd sistema-vendas-backend
+./mvnw spring-boot:run
+```
+
+No Windows:
+
+```powershell
+mvnw.cmd spring-boot:run
+```
+
+## API
+
+A implementação expõe operações de produtos sob a API da aplicação. Consulte o controller do projeto para os endpoints mantidos pela versão atual.
+
+## Objetivo de aprendizado
+
+Este projeto faz parte da minha evolução em backend Java, especialmente em APIs REST, organização em camadas, regras de negócio, ORM e persistência de dados.
